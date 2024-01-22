@@ -4,8 +4,11 @@ services:
   langchain-server:
     build:
       context: .
+    container_name: langchain-server
     ports:
       - "8000:8000"
+    volumes:
+      - .:/app
     env_file:
       - .env
     command: ["uvicorn", "serve:app", "--host", "0.0.0.0", "--port", "8000"]
