@@ -1,6 +1,8 @@
+import logging
 from fastapi import FastAPI
 from langserve import add_routes
 from model import llm
+from settings import WEBAPP_HOST, WEBAPP_PORT
 
 app = FastAPI(
   title="LangChain Server",
@@ -16,4 +18,5 @@ add_routes(
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="localhost", port=8000)
+    logging.basicConfig(level=logging.DEBUG)
+    uvicorn.run(app, host=WEBAPP_HOST, port=WEBAPP_PORT)

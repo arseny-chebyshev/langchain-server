@@ -6,9 +6,9 @@ services:
       context: .
     container_name: langchain-server
     ports:
-      - "8000:8000"
+      - "$WEBAPP_PORT:$WEBAPP_PORT"
     volumes:
       - .:/app
     env_file:
       - .env
-    command: ["uvicorn", "serve:app", "--host", "0.0.0.0", "--port", "8000"]
+    command: ["python", "serve.py"]
